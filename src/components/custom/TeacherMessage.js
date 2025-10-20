@@ -1,8 +1,7 @@
 import React from 'react';
+import { Text } from 'react-native';
 import { View } from 'react-native';
 import { styles } from '../../styles/styles';
-import { Text } from '../ui';
-
 
 export default function TeacherMessage () {
     return (
