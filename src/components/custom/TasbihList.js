@@ -1,24 +1,37 @@
-import React, { useState } from 'react';
-import { View, FlatList, Text } from 'react-native'; // You may switch Text to ui/Text later
+import React, { useState, useEffect } from 'react';
+import { View, FlatList } from 'react-native';
 import { styles } from '../../styles/styles';
-import { initialAzkaar } from '../../data/azkaar';
+import Text from '../ui/Text';
+import Button from '../ui/Button';
 
-/**
- * Custom/TasbihList
- * Renders a FlatList of azkaar with their counts.
- * NOTE: Increment/Decrement buttons are intentionally NOT implemented.
- * Students will add + and - controls using UI/Button and update state accordingly.
- */
-export default function TasbihList() {
+export default function TasbihList({ initialAzkaar }) {
   const [items, setItems] = useState(initialAzkaar);
 
-  // HINT ONLY (do not complete): you will need handlers like increment(id) / decrement(id)
+  // Update list when props change
+  useEffect(() => {
+    setItems(initialAzkaar);
+  }, [initialAzkaar]);
+
+  const handleIncrement = (id) => {
+    setItems(items.map(item =>
+      item.id === id ? { ...item, count: item.count + 1 } : item
+    ));
+  };
+
+  const handleDecrement = (id) => {
+    setItems(items.map(item =>
+      item.id === id && item.count > 0
+        ? { ...item, count: item.count - 1 }
+        : item
+    ));
+  };
 
   const renderItem = ({ item }) => (
     <View style={styles.itemRow}>
       <Text style={styles.itemName}>{item.phrase}</Text>
       <Text style={styles.counter}>{item.count}</Text>
-      {/* TODO: Add increment/decrement buttons here using ui/Button */}
+      <Button onPress={() => handleIncrement(item.id)} children="+" />
+      <Button onPress={() => handleDecrement(item.id)} children="-" />
     </View>
   );
 
@@ -27,7 +40,7 @@ export default function TasbihList() {
       <Text style={styles.sectionTitle}>Tasbih Counter</Text>
       <FlatList
         data={items}
-        keyExtractor={(it) => it.id}
+        keyExtractor={(item) => item.id}
         renderItem={renderItem}
       />
     </View>

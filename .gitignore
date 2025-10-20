@@ -1,0 +1,66 @@
+# Node dependencies
+/node_modules/
+npm-debug.log*
+yarn-error.log*
+
+# Expo
+.expo/
+.expo-shared/
+.expo-kit/
+web-build/
+
+# React Native / Android / iOS build artifacts
+android/.gradle/
+android/.idea/
+android/app/build/
+android/build/
+*.keystore
+*.gradle
+ios/Pods/
+ios/DerivedData/
+ios/build/
+
+# Xcode
+*.xcworkspace
+*.xcuserstate
+*.xcuserdata
+*.xcodeproj/project.xcworkspace/
+
+# Backup / temp folders (you have a "backup" folder in screenshot)
+backup/
+tmp/
+temp/
+
+# Bundler / Metro cache
+/metro-cache/
+.bundle/
+.cache/
+
+# Environment files (secrets)
+.env
+.env.*           # .env.local, .env.production, etc.
+
+# Logs and coverage
+*.log
+coverage/
+coverage-final.json
+
+# Editor / IDE
+.vscode/
+.idea/
+*.sublime-workspace
+*.sublime-project
+*.iml
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Test / build outputs
+dist/
+build/
+
+# Misc
+*.swp
+*.swo
+*.bak
